@@ -7,6 +7,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>persistence</module>
+        <module>transfer</module>
+        <module>common-libraries</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
