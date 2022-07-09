@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 @JsonSerialize
 public enum RequestType implements Serializable {
+    
+    //sve sistemske operacije
     LOGIN,
     SAVE_FAMILY_TREE,
     GET_NODES_OF_TREE,
