@@ -7,7 +7,6 @@ import java.util.Properties;
 public class DatabaseProperties {
     
     private final Properties properties;
-    
     private DatabaseProperties(){
         this.properties = new Properties();
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("database.properties");
@@ -17,17 +16,15 @@ public class DatabaseProperties {
             System.err.println("Could not load database properties");
         }
     }
-    
+
     //lazy loading i thread safe
     private static class Singleton{
         private static final DatabaseProperties INSTANCE = new DatabaseProperties();
     }
-
     public static DatabaseProperties getInstance(){
         return Singleton.INSTANCE;
     }
-
-     public String getProperty(String key) {
+    public String getProperty(String key) {
         return properties.getProperty(key);
     }
      

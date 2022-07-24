@@ -1,16 +1,17 @@
-package model.enums.implementation;
+package entity.implementation;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.Entity;
+import entity.Entity;
 
-@Data @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class CaseItem implements Entity{
     
     private static final String INSERT_ATTRIBUTES = "internal_number,official_number,case_id";
     private static final String TABLE_NAME = "case_item";
     
-    long id;
+    int id;
     int internalNumber;
     int officialNumber;
     Case case1;

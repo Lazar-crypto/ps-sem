@@ -1,7 +1,6 @@
 package server;
 
-import dto.impl.UserDTO;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import server.properties.ServerProperties;
 
 import java.io.IOException;
@@ -10,19 +9,22 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
+@Log
 public class Server extends Thread{
 
      private final ServerSocket serverSocket;
      private final List<ClientHandler> clients;
 
-     Boolean running = true;
+     private Boolean running = true;
 
     public Server() throws IOException {
         serverSocket = new ServerSocket(Integer.parseInt(ServerProperties.getInstance().getProperty("server_port")));
         clients = new ArrayList<>();
     }
 
+    public List<ClientHandler> getClients() {
+        return clients;
+    }
 
     @Override
     public void run() {
@@ -35,7 +37,8 @@ public class Server extends Thread{
                 clientHandler.start();
 
             } catch (IOException e) {
-                log.error("Client did not connect: " + e.getMessage());
+                //or server stopped
+                log.info("Client did not connect: " + e.getMessage());
             }
         }
         stopAllThreads();
@@ -47,7 +50,7 @@ public class Server extends Thread{
                 client.getSocket().close();
 
             } catch (IOException ex) {
-                log.error("Client thread failed to stop: " + ex.getMessage());
+                log.info("Client thread failed to stop: " + ex.getMessage());
             }
         }
     }
@@ -58,16 +61,8 @@ public class Server extends Thread{
             serverSocket.close();
 
         } catch (IOException e) {
-            log.error("Failed to terminate server" + e.getMessage());
+            log.info("Failed to terminate server" + e.getMessage());
         }
     }
 
-    public List<UserDTO> getAllUsers() {
-        List<UserDTO> users = new ArrayList<>();
-
-        for (ClientHandler client : clients) {
-            users.add(client.getLoginUser());
-        }
-        return users;
-    }
 }

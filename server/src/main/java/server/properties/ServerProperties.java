@@ -1,13 +1,14 @@
 package server.properties;
 
 
-import lombok.extern.slf4j.Slf4j;
+
+import lombok.extern.java.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-@Slf4j
+@Log
 public class ServerProperties {
 
     private static ServerProperties instance;
@@ -22,7 +23,7 @@ public class ServerProperties {
             properties.load(reader);
         }catch (IOException e){
             e.printStackTrace();
-            log.error("Could not load server properties file.");
+            log.info("Could not load server properties file.");
         }
     }
 

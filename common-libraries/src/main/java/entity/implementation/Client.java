@@ -1,18 +1,20 @@
-package model.enums.implementation;
+package entity.implementation;
 
 import java.time.LocalDate;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import model.Entity;
-import model.enums.ClientProperty;
+import entity.Entity;
+import entity.implementation.enums.ClientProperty;
 
-@Data @NoArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor
 public class Client implements Entity{
     
-    private static final String INSERT_ATTRIBUTES = "name,surname,date_of_birth,unique_citizen_identity_number,contact_number,client_property_id ";
+    private static final String INSERT_ATTRIBUTES = "name,surname,dateOfBirth,uniqueCitizenIdentityNumber,contactNumber,clientPropertyId ";
     private static final String TABLE_NAME = "client";
 
-    private long id ;
+    private int id ;
     private String name;
     private String surname;
     private LocalDate dateOfBirth;

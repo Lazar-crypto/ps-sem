@@ -40,7 +40,7 @@ public class ConnectionPool {
     }
 
     public static boolean releaseConnection(Connection connection){
-        return POOL.remove(connection);
+        return POOL.add(connection);
     }
     
 }

@@ -8,7 +8,9 @@ import java.io.Serializable;
 public class UserDTO implements Serializable {
 
     private final long id;
+    private long attorneyIdentificationNumber;
     private final String name;
+    private final String surname;
     private final String email;
 
 }
